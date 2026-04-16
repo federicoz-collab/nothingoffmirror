@@ -1,0 +1,577 @@
+<!DOCTYPE html>
+<html lang="it" class="scroll-smooth dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Nothing Off Mirror | Metalcore / Post-Hardcore da Ferrara</title>
+  <meta name="description" content="Nothing Off Mirror è una band metalcore/post-hardcore italiana nata a Ferrara. Video ufficiali, musica in streaming, date live, bio, merch e contatti." />
+  <meta name="theme-color" content="#050505" />
+
+  <meta property="og:title" content="Nothing Off Mirror | Metalcore / Post-Hardcore da Ferrara" />
+  <meta property="og:description" content="Video ufficiali, musica in streaming, date live, bio, merch e contatti dei Nothing Off Mirror." />
+  <meta property="og:type" content="website" />
+  <meta property="og:locale" content="it_IT" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Epilogue:wght@300;700;800;900&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            obsidian: '#050505',
+            coal: '#0d0d0d',
+            steel: '#1a1a1a',
+            mist: '#a6a6a6',
+            line: '#262626'
+          },
+          fontFamily: {
+            headline: ['Epilogue', 'sans-serif'],
+            body: ['Inter', 'sans-serif']
+          },
+          boxShadow: {
+            cinematic: '0 40px 100px -30px rgba(0,0,0,0.85)'
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    html:focus-within {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: #050505;
+      color: #e5e2e1;
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    .grain::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      opacity: 0.04;
+      z-index: 40;
+      background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCDrG_i1UVms7BobcBXvS0tlVNSSNXon5yj3LPStwxTuZLPtxsZqtkof7rqgz0ZzqnWNk3XeskR6WOTKm8pEuCx5yNZJO-lhyXf9b8t5MrctEECsKPSWMUwigya0pVKHfrGN-QAATkV01dV4Ibm7qh4q-FXe3jxxjVv-f6HU2Cl1PNvb-i_PQd4UMrP_8EUoHtca7j9keBpM2fUNeDE2bzMFKnSa-f2f95HquUNqV71VmwxtfC3oYGGjYsc9ZczE6KieGM9NtoU5lE');
+    }
+
+    .spec-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.26em;
+      text-transform: uppercase;
+      color: #707070;
+      font-weight: 600;
+    }
+
+    .section-title {
+      letter-spacing: -0.06em;
+    }
+
+    .cinematic-mask {
+      mask-image: linear-gradient(to right, transparent, black 8%, black 92%, transparent);
+    }
+
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+
+    .nav-backdrop {
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      background: rgba(5, 5, 5, 0.72);
+      border-bottom: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .video-card {
+        position: absolute;
+        overflow: hidden;
+        border: 1px solid rgba(255,255,255,0.05);
+        background: #1a1a1a;
+        box-shadow: 0 40px 100px -30px rgba(0,0,0,0.85);
+        transition: all 0.55s ease;
+        cursor: pointer;
+    }
+
+    .video-card.is-active {
+        width: min(100%, 860px);
+        top: 0;
+        left: 0;
+        z-index: 20;
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    .video-card.is-secondary {
+        width: min(72%, 520px);
+        top: 220px;
+        right: 0;
+        z-index: 10;
+        transform: scale(0.96);
+        opacity: 0.88;
+    }
+
+    .video-card.is-secondary:hover {
+        transform: scale(0.985);
+        opacity: 1;
+    }
+
+    @media (max-width: 1023px) {
+        .video-card.is-active,
+        .video-card.is-secondary {
+            position: relative;
+            width: 100%;
+            top: auto;
+            left: auto;
+            right: auto;
+            transform: none;
+            opacity: 1;
+    }
+
+    .video-card.is-secondary {
+        margin-top: 1.5rem;
+    }
+    }
+  </style>
+</head>
+<body class="selection:bg-white selection:text-black">
+  <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[120] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-black">Salta al contenuto</a>
+
+  <nav class="fixed inset-x-0 top-0 z-50">
+    <div class="mx-auto flex max-w-7xl items-center justify-between px-6 py-6 md:px-10">
+      <a href="#top" class="font-headline text-lg font-black uppercase tracking-[-0.08em] text-white sm:text-xl">Nothing Off Mirror</a>
+
+      <button id="menu-toggle" class="inline-flex items-center justify-center rounded border border-white/10 px-3 py-2 text-xs font-semibold uppercase tracking-[0.24em] text-white md:hidden" aria-expanded="false" aria-controls="mobile-menu" aria-label="Apri menu">
+        Menu
+      </button>
+
+      <div class="hidden items-center gap-8 md:flex">
+        <a class="text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-400 transition hover:text-white" href="#video">Video</a>
+        <a class="text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-400 transition hover:text-white" href="#musica">Musica</a>
+        <a class="text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-400 transition hover:text-white" href="#live">Live</a>
+        <a class="text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-400 transition hover:text-white" href="#bio">Bio</a>
+        <a class="text-[11px] font-semibold uppercase tracking-[0.24em] text-neutral-400 transition hover:text-white" href="#contatti">Contatti</a>
+      </div>
+    </div>
+
+    <div id="mobile-menu" class="hidden border-t border-white/5 bg-black/90 px-6 py-4 md:hidden">
+      <div class="flex flex-col gap-4">
+        <a class="text-sm font-medium text-neutral-300 transition hover:text-white" href="#video">Video</a>
+        <a class="text-sm font-medium text-neutral-300 transition hover:text-white" href="#musica">Musica</a>
+        <a class="text-sm font-medium text-neutral-300 transition hover:text-white" href="#live">Live</a>
+        <a class="text-sm font-medium text-neutral-300 transition hover:text-white" href="#bio">Bio</a>
+        <a class="text-sm font-medium text-neutral-300 transition hover:text-white" href="#contatti">Contatti</a>
+      </div>
+    </div>
+  </nav>
+
+  <main id="main">
+    <header id="top" class="relative flex min-h-screen items-end overflow-hidden">
+      <div class="absolute inset-0">
+        <img src="./img/hero-band.webp" alt="Foto promo dei Nothing Off Mirror" class="h-full w-full object-cover object-[center_35%] contrast-[1.05] brightness-[0.88]">
+        <div class="absolute inset-0 bg-gradient-to-b from-black/40 via-black/20 to-black"></div>
+        <div class="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,rgba(5,5,5,0.25)_48%,rgba(5,5,5,0.86)_100%)]"></div>
+      </div>
+
+      <div class="relative z-10 mx-auto w-full max-w-7xl px-6 pb-16 pt-32 md:px-10 md:pb-24 md:pt-40">
+        <div class="max-w-5xl">
+          <p class="mb-5 spec-label">Ferrara, Italia // Metalcore / Post-Hardcore</p>
+          <img src="./img/logo-nothing-off-mirror.webp" alt="Nothing Off Mirror" class="w-full max-w-[820px] h-auto">
+
+          <div class="mt-10 grid gap-10 md:grid-cols-[minmax(0,30rem)_auto] md:items-end">
+            <p class="border-l border-white/20 pl-5 text-base leading-7 text-neutral-300 sm:pl-6 sm:text-lg">
+              Metalcore/post-hardcore con radici profonde e uno sguardo lucido sulle fratture dell’identità contemporanea.
+            </p>
+
+            <div class="flex flex-wrap gap-3 md:justify-end">
+              <a href="#video" class="inline-flex items-center justify-center border border-white bg-white px-6 py-4 text-[11px] font-bold uppercase tracking-[0.22em] text-black transition hover:bg-neutral-200">Guarda i video</a>
+              <a href="#musica" class="inline-flex items-center justify-center border border-white/20 px-6 py-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white transition hover:bg-white/8">Ascolta ora</a>
+              <a href="#live" class="inline-flex items-center justify-center border border-white/20 px-6 py-4 text-[11px] font-bold uppercase tracking-[0.22em] text-white transition hover:bg-white/8">Date live</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <section id="video" class="bg-obsidian px-6 py-24 md:px-10 md:py-36">
+    <div class="mx-auto max-w-7xl">
+        <div class="mb-14 flex flex-col gap-6 md:mb-20 md:flex-row md:items-end md:justify-between">
+        <div class="max-w-2xl">
+            <p class="mb-4 spec-label">Aesthetic Identity // Motion</p>
+            <h2 class="section-title font-headline text-5xl font-black uppercase text-white md:text-7xl">Video</h2>
+        </div>
+        <p class="max-w-md text-sm leading-6 text-neutral-400 md:text-base">
+            Guarda i videoclip ufficiali dei Nothing Off Mirror.
+        </p>
+        </div>
+
+        <div class="relative h-[620px] md:h-[720px]" id="video-slider">
+        <article class="video-card is-active" data-video-card>
+            <div class="aspect-video overflow-hidden">
+            <iframe
+                class="h-full w-full"
+                src="https://www.youtube.com/embed/jyyxRQQN5y8"
+                title="Nothing Off Mirror - Digital Chain"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+            </div>
+            <div class="p-6 md:p-8">
+            <p class="mb-2 spec-label">Video ufficiale</p>
+            <h3 class="font-headline text-3xl font-black uppercase text-white">Digital Chain</h3>
+            </div>
+        </article>
+
+        <article class="video-card is-secondary" data-video-card>
+            <div class="aspect-video overflow-hidden">
+            <iframe
+                class="h-full w-full"
+                src="https://www.youtube.com/embed/aGl4IyUamkc"
+                title="Nothing Off Mirror - The Fire I’ve Become"
+                loading="lazy"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen>
+            </iframe>
+            </div>
+            <div class="p-6 md:p-8">
+            <p class="mb-2 spec-label">Video ufficiale</p>
+            <h3 class="font-headline text-2xl font-black uppercase text-white">The Fire I’ve Become</h3>
+            </div>
+        </article>
+
+        <div class="absolute bottom-0 left-0 z-30 flex gap-3">
+            <button type="button" id="video-prev" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">
+            Prev
+            </button>
+            <button type="button" id="video-next" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">
+            Next
+            </button>
+        </div>
+        </div>
+    </div>
+    </section>
+
+    <section id="musica" class="border-t border-white/5 bg-coal px-6 py-24 md:px-10 md:py-36">
+      <div class="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[0.9fr_1.1fr] lg:items-start">
+        <div class="lg:sticky lg:top-28">
+          <p class="mb-4 spec-label">Streaming Platforms</p>
+          <h2 class="section-title font-headline text-5xl font-black uppercase text-white md:text-7xl">Musica</h2>
+          <p class="mt-8 max-w-md text-base leading-7 text-neutral-400">Disponibili su Spotify e su tutte le principali piattaforme digitali.</p>
+        </div>
+
+        <div class="space-y-10">
+          <article class="grid gap-6 border border-white/5 bg-black/40 p-6 shadow-cinematic md:grid-cols-[350px_1fr] md:p-8">
+            <div class="aspect-square overflow-hidden bg-steel">
+              <img src="img/cover-digital-chains.jpg" alt="Copertina Digital Chain" class="h-full w-full object-cover contrast-125" />
+            </div>
+            <div class="flex flex-col justify-between gap-6">
+              <div>
+                <p class="mb-2 spec-label">Singolo</p>
+                <h3 class="font-headline text-3xl font-black uppercase text-white">Digital Chain</h3>
+                <p class="mt-3 text-sm leading-6 text-neutral-400">Un grido contro l’anestesia digitale: rompere il rumore, tagliare i fili e riprendersi ciò che resta della propria identità.</p>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://open.spotify.com/intl-it/album/72MRPyweqnaN35QnhiqeCL" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">Spotify</a>
+                <a href="https://music.youtube.com/watch?v=_1iBNb92mqQ" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">YouTube Music</a>
+                <a href="https://music.apple.com/us/album/digital-chains-single/1874866087" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">Apple Music</a>
+              </div>
+            </div>
+          </article>
+
+          <article class="grid gap-6 border border-white/5 bg-black/40 p-6 shadow-cinematic md:grid-cols-[350px_1fr] md:p-8">
+            <div class="aspect-square overflow-hidden bg-steel">
+              <img src="img/cover-the-fire-ive-become.jpg" alt="Copertina The Fire I've Become" class="h-full w-full object-cover contrast-125" />
+            </div>
+            <div class="flex flex-col justify-between gap-6">
+              <div>
+                <p class="mb-2 spec-label">Singolo</p>
+                <h3 class="font-headline text-3xl font-black uppercase text-white">The Fire I’ve Become</h3>
+                <p class="mt-3 text-sm leading-6 text-neutral-400">Dalle ceneri del crollo interiore nasce una promessa: non sparire, ma rialzarsi.</p>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <a href="https://open.spotify.com/intl-it/album/4TZP89081gL3kqTCGzXxRP" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">Spotify</a>
+                <a href="https://music.youtube.com/playlist?list=OLAK5uy_krkrdZw0l5Kw9KH7-SzDIoRaciR9r19PE" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">YouTube Music</a>
+                <a href="https://music.apple.com/us/album/the-fire-ive-become-feat-paul-single/1875931828?at=1001lry3&ct=dashboard&uo=4" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">Apple Music</a>
+              </div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="live" class="bg-obsidian px-6 py-24 md:px-10 md:py-36">
+      <div class="mx-auto max-w-5xl text-center">
+        <p class="mb-4 spec-label">Live Calendar</p>
+        <h2 class="section-title font-headline text-5xl font-black uppercase text-white md:text-7xl">Live</h2>
+        <p class="mx-auto mt-6 max-w-xl text-base leading-7 text-neutral-400">Dove vederci dal vivo</p>
+      </div>
+
+      <div class="mx-auto mt-14 max-w-4xl overflow-hidden border border-white/5 bg-black/40 shadow-cinematic">
+        <div class="grid gap-px bg-white/5 md:grid-cols-[180px_1fr_160px]">
+          <div class="bg-black px-6 py-8 text-center md:text-left">
+            <div class="font-headline text-4xl font-black text-white">29</div>
+            <div class="mt-1 text-xs uppercase tracking-[0.28em] text-neutral-500">05 /2026</div>
+          </div>
+          <div class="bg-black px-6 py-8 text-left">
+            <h3 class="font-headline text-2xl font-black uppercase text-white">MUGA</h3>
+            <p class="mt-2 text-sm leading-6 text-neutral-400">Via Zucchini 23/A Ferrara (FE) - Apertura ore 21:00</p>
+          </div>
+          <div class="bg-black px-6 py-8 text-left md:flex md:items-center md:justify-end">
+            <a href="https://www.instagram.com/p/DXEY1wrCOm7/" class="inline-flex border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white">Info</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="bio" class="border-t border-white/5 bg-coal px-6 py-24 md:px-10 md:py-36">
+      <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-[1fr_1fr] lg:items-center">
+        <div class="relative overflow-hidden shadow-cinematic">
+          <img src="img/nothing-off-mirror-band.jpg" alt="Dettaglio fotografico della band" class="h-full w-full object-cover brightness-[1] contrast-125" />
+          <div class="absolute inset-0 bg-gradient-to-tr from-black/80 to-transparent"></div>
+        </div>
+
+        <div>
+          <p class="mb-4 spec-label">Origin & Concept</p>
+          <h2 class="section-title font-headline text-5xl font-black uppercase text-white md:text-7xl">Chi siamo</h2>
+          <div class="mt-8 space-y-6 text-base leading-8 text-neutral-400 md:text-lg">
+            <p>Nati a Ferrara nel dicembre 2024, i <strong class="text-white">Nothing Off Mirror</strong> prendono forma dall’incontro di cinque musicisti provenienti da esperienze consolidate nell’ambito metalcore e post-hardcore. Alla voce Daniele Finardi, alla batteria Nicola Giovanardi, alle chitarre Nicola Bentivoglio e Simone Cavicchi, e al basso Federico Zappaterra: percorsi diversi, una visione comune.</p>
+            <p>Il progetto nasce dall’esigenza di riportare in primo piano le sonorità metalcore e post-hardcore che hanno segnato una generazione, reinterpretandole con uno sguardo contemporaneo, personale e visivamente coerente. Riff taglienti, ritmiche violente, vocalità sporca e intensa si alternano ad aperture melodiche, elementi elettronici e suggestioni orchestrali.</p>
+            <p>Al centro del progetto c’è una riflessione sull’identità nell’epoca degli schermi: il mirror non è solo uno specchio, ma il punto di frattura tra ciò che siamo e ciò che mostriamo. Una tensione costante tra immagine, percezione e verità.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="bg-obsidian px-0 py-24 md:py-36">
+      <div class="mx-auto mb-12 flex max-w-7xl items-end justify-between px-6 md:px-10">
+        <div>
+          <p class="mb-4 spec-label">Personnel Index</p>
+          <h2 class="section-title font-headline text-5xl font-black uppercase text-white md:text-7xl">La band</h2>
+        </div>
+        <div class="hidden md:block spec-label">Units: 05 // Status: Active</div>
+      </div>
+
+        <div class="cinematic-mask flex gap-0 overflow-x-auto no-scrollbar">
+        <a href="https://www.instagram.com/dan_finardi/" target="_blank" rel="noopener noreferrer" class="group relative block min-w-[82vw] overflow-hidden border-r border-white/5 sm:min-w-[430px] md:min-w-[500px]">
+            <div class="h-[560px] overflow-hidden">
+            <img src="img/daniele-finardi.jpeg" alt="Daniele Finardi" class="h-full w-full object-cover brightness-[1] transition duration-700 group-hover:scale-105" />
+            </div>
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent p-8">
+            <h3 class="font-headline text-3xl font-black uppercase text-white">Daniele Finardi</h3>
+            <p class="mt-2 spec-label">Voce</p>
+            </div>
+        </a>
+
+        <a href="https://www.instagram.com/ng_photographer_/" target="_blank" rel="noopener noreferrer" class="group relative block min-w-[82vw] overflow-hidden border-r border-white/5 sm:min-w-[430px] md:min-w-[500px]">
+            <div class="h-[560px] overflow-hidden">
+            <img src="img/nicola-giovanardi.jpeg" alt="Nicola Giovanardi" class="h-full w-full object-cover brightness-[1] transition duration-700 group-hover:scale-105" />
+            </div>
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent p-8">
+            <h3 class="font-headline text-3xl font-black uppercase text-white">Nicola Giovanardi</h3>
+            <p class="mt-2 spec-label">Batteria</p>
+            </div>
+        </a>
+
+        <a href="https://www.instagram.com/nico.benti89/" target="_blank" rel="noopener noreferrer" class="group relative block min-w-[82vw] overflow-hidden border-r border-white/5 sm:min-w-[430px] md:min-w-[500px]">
+            <div class="h-[560px] overflow-hidden">
+            <img src="img/nicola-bentivoglio.jpeg" alt="Nicola Bentivoglio" class="h-full w-full object-cover brightness-[1] transition duration-700 group-hover:scale-105" />
+            </div>
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent p-8">
+            <h3 class="font-headline text-3xl font-black uppercase text-white">Nicola Bentivoglio</h3>
+            <p class="mt-2 spec-label">Chitarra</p>
+            </div>
+        </a>
+
+        <a href="https://www.instagram.com/cav_simon/" target="_blank" rel="noopener noreferrer" class="group relative block min-w-[82vw] overflow-hidden border-r border-white/5 sm:min-w-[430px] md:min-w-[500px]">
+            <div class="h-[560px] overflow-hidden">
+            <img src="img/simone-cavicchi.jpeg" alt="Simone Cavicchi" class="h-full w-full object-cover brightness-[1] transition duration-700 group-hover:scale-105" />
+            </div>
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent p-8">
+            <h3 class="font-headline text-3xl font-black uppercase text-white">Simone Cavicchi</h3>
+            <p class="mt-2 spec-label">Chitarra</p>
+            </div>
+        </a>
+
+        <a href="https://instagram.com/zappabassplayer" target="_blank" rel="noopener noreferrer" class="group relative block min-w-[82vw] overflow-hidden sm:min-w-[430px] md:min-w-[500px]">
+            <div class="h-[560px] overflow-hidden">
+            <img src="img/federico-zappaterra.jpeg" alt="Federico Zappaterra" class="h-full w-full object-cover brightness-[1] transition duration-700 group-hover:scale-105" />
+            </div>
+            <div class="absolute inset-x-0 bottom-0 bg-gradient-to-t from-black to-transparent p-8">
+            <h3 class="font-headline text-3xl font-black uppercase text-white">Federico Zappaterra</h3>
+            <p class="mt-2 spec-label">Basso</p>
+            </div>
+        </a>
+        </div>
+    </section>
+
+    <section class="border-t border-white/5 bg-coal px-6 py-24 md:px-10 md:py-36">
+      <div class="mx-auto max-w-7xl">
+        <div class="mb-14 text-center md:mb-20">
+          <p class="mb-4 spec-label">Merch Showcase</p>
+          <h2 class="section-title font-headline text-5xl font-black uppercase text-white md:text-7xl">Merch</h2>
+          <p class="mx-auto mt-6 max-w-xl text-base leading-7 text-neutral-400">Supportaci acquistando il nostro merch</p>
+        </div>
+
+        <div class="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <article class="border border-white/5 bg-black/40 p-6 shadow-cinematic">
+            <div class="aspect-[4/5] overflow-hidden bg-steel">
+              <img src="img/tshirt-nothing-off-mirror-woman.jpg" alt="T-shirt merch Nothing Off Mirror" class="h-full w-full object-cover" />
+            </div>
+            <div class="mt-6">
+              <p class="mb-2 spec-label">T-shirt</p>
+              <h3 class="font-headline text-2xl font-black uppercase text-white">Digital Chain T-shirt</h3>
+            </div>
+          </article>
+
+          <article class="border border-white/5 bg-black/40 p-6 shadow-cinematic">
+            <div class="aspect-[4/5] overflow-hidden bg-steel">
+              <img src="img/tshirt-nothing-off-mirror-man.jpg" alt="Seconda t-shirt merch Nothing Off Mirror" class="h-full w-full object-cover" />
+            </div>
+            <div class="mt-6">
+              <p class="mb-2 spec-label">T-shirt</p>
+              <h3 class="font-headline text-2xl font-black uppercase text-white">Digital Chain T-shirt</h3>
+            </div>
+          </article>
+
+          <article class="border border-white/5 bg-black/40 p-6 shadow-cinematic md:col-span-2 xl:col-span-1 xl:flex xl:flex-col xl:justify-center">
+            <p class="mb-2 spec-label">Merch Info</p>
+            <h3 class="font-headline text-3xl font-black uppercase text-white">Il nostro Merch</h3>
+            <p class="mt-4 text-sm leading-6 text-neutral-400">isponibile ai live, via DM o su bandcamp</p>
+         <div class="mt-6">
+            <a href="https://nothingoffmirror.bandcamp.com/merch/digital-chains-official-t-shirt" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center border border-white/15 px-5 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">
+            Acquista ora
+            </a>
+        </div> 
+        </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="contatti" class="border-t border-white/5 bg-obsidian px-6 py-24 md:px-10 md:py-36">
+      <div class="mx-auto grid max-w-7xl gap-12 md:grid-cols-[1fr_auto] md:items-end">
+        <div>
+          <p class="mb-4 spec-label">Contact Node</p>
+          <h2 class="section-title font-headline text-5xl font-black uppercase text-white md:text-7xl">Contatti</h2>
+          <p class="mt-6 text-base leading-7 text-neutral-400">Per live, collaborazioni o richieste:</p>
+          <a href="mailto:nothingoffmirror@gmail.com" class="mt-3 inline-block text-xl font-medium text-white transition hover:opacity-75 md:text-2xl">nothingoffmirror@gmail.com</a>
+        </div>
+
+        <div class="grid gap-4 sm:grid-cols-2 md:min-w-[320px]">
+          <a href="https://www.instagram.com/nothingoffmirror/" target="_blank" rel="noopener noreferrer" class="border border-white/10 p-5 transition hover:bg-white/5">
+            <p class="mb-2 spec-label">Social</p>
+            <span class="flex items-center gap-3 font-headline text-xl font-black uppercase text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                <path d="M7.75 2h8.5A5.75 5.75 0 0 1 22 7.75v8.5A5.75 5.75 0 0 1 16.25 22h-8.5A5.75 5.75 0 0 1 2 16.25v-8.5A5.75 5.75 0 0 1 7.75 2Zm0 1.5A4.25 4.25 0 0 0 3.5 7.75v8.5a4.25 4.25 0 0 0 4.25 4.25h8.5a4.25 4.25 0 0 0 4.25-4.25v-8.5a4.25 4.25 0 0 0-4.25-4.25h-8.5Zm8.75 2.25a1 1 0 1 1 0 2 1 1 0 0 1 0-2ZM12 6.5A5.5 5.5 0 1 1 6.5 12 5.51 5.51 0 0 1 12 6.5Zm0 1.5A4 4 0 1 0 16 12a4 4 0 0 0-4-4Z"/>
+                </svg>
+                Instagram
+            </span>
+            </a>
+
+          <a href="https://www.youtube.com/@NothingOffMirror" target="_blank" rel="noopener noreferrer" class="border border-white/10 p-5 transition hover:bg-white/5">
+            <p class="mb-2 spec-label">Video</p>
+            <span class="flex items-center gap-3 font-headline text-xl font-black uppercase text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                <path d="M21.58 7.19a2.99 2.99 0 0 0-2.1-2.12C17.62 4.5 12 4.5 12 4.5s-5.62 0-7.48.57a2.99 2.99 0 0 0-2.1 2.12A31.3 31.3 0 0 0 1.85 12a31.3 31.3 0 0 0 .57 4.81 2.99 2.99 0 0 0 2.1 2.12c1.86.57 7.48.57 7.48.57s5.62 0 7.48-.57a2.99 2.99 0 0 0 2.1-2.12A31.3 31.3 0 0 0 22.15 12a31.3 31.3 0 0 0-.57-4.81ZM10 15.5v-7l6 3.5-6 3.5Z"/>
+                </svg>
+                YouTube
+            </span>
+            </a>
+
+            <a href="https://open.spotify.com/intl-it/artist/3sHk5v2Fl5ct0YapBjTZNC" target="_blank" rel="noopener noreferrer" class="border border-white/10 p-5 transition hover:bg-white/5">
+            <p class="mb-2 spec-label">Streaming</p>
+            <span class="flex items-center gap-3 font-headline text-xl font-black uppercase text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                <path d="M12 1.75a10.25 10.25 0 1 0 10.25 10.25A10.26 10.26 0 0 0 12 1.75Zm4.7 14.83a.75.75 0 0 1-1.03.24 8.7 8.7 0 0 0-8.9-.16.75.75 0 1 1-.72-1.31 10.2 10.2 0 0 1 10.43.19.75.75 0 0 1 .22 1.04Zm1.47-3.26a.94.94 0 0 1-1.28.3 11.86 11.86 0 0 0-12.02-.2.94.94 0 0 1-.95-1.62 13.74 13.74 0 0 1 13.95.23.94.94 0 0 1 .3 1.29Zm.12-3.43a15.3 15.3 0 0 0-14.64-.28 1.13 1.13 0 1 1-1.11-1.97 17.56 17.56 0 0 1 16.83.32 1.13 1.13 0 0 1-1.08 1.93Z"/>
+                </svg>
+                Spotify
+            </span>
+            </a>
+
+            <a href="#" target="_blank" rel="noopener noreferrer" class="border border-white/10 p-5 transition hover:bg-white/5">
+            <p class="mb-2 spec-label">Social</p>
+            <span class="flex items-center gap-3 font-headline text-xl font-black uppercase text-white">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor" class="h-5 w-5">
+                <path d="M16.6 5.82A4.83 4.83 0 0 1 15.47 3h-2.2v12.08a2.66 2.66 0 1 1-2.66-2.66c.2 0 .4.02.59.07V10.2a4.88 4.88 0 0 0-.59-.03A4.91 4.91 0 1 0 15.53 15V8.9a7.01 7.01 0 0 0 4.1 1.32V8.03a4.79 4.79 0 0 1-3.03-2.21Z"/>
+                </svg>
+                TikTok
+            </span>
+            </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 bg-coal px-6 py-10 md:px-10">
+    <div class="mx-auto flex max-w-7xl flex-col gap-6 md:flex-row md:items-center md:justify-between">
+      <div>
+        <div class="font-headline text-lg font-black uppercase tracking-[-0.06em] text-white">Nothing Off Mirror</div>
+        <div class="mt-2 text-xs uppercase tracking-[0.24em] text-neutral-500">© 2026 // Ferrara, Italia</div>
+      </div>
+      <div class="text-xs uppercase tracking-[0.2em] text-neutral-500">
+        Video, musica, live e contatti ufficiali
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const toggleButton = document.getElementById('menu-toggle');
+    const mobileMenu = document.getElementById('mobile-menu');
+
+    if (toggleButton && mobileMenu) {
+      toggleButton.addEventListener('click', () => {
+        const expanded = toggleButton.getAttribute('aria-expanded') === 'true';
+        toggleButton.setAttribute('aria-expanded', String(!expanded));
+        mobileMenu.classList.toggle('hidden');
+      });
+
+      mobileMenu.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', () => {
+          mobileMenu.classList.add('hidden');
+          toggleButton.setAttribute('aria-expanded', 'false');
+        });
+      });
+    }
+  </script>
+<script>
+  const videoCards = document.querySelectorAll('[data-video-card]');
+  const prevButton = document.getElementById('video-prev');
+  const nextButton = document.getElementById('video-next');
+
+  function swapCards() {
+    if (videoCards.length < 2) return;
+
+    videoCards[0].classList.toggle('is-active');
+    videoCards[0].classList.toggle('is-secondary');
+
+    videoCards[1].classList.toggle('is-active');
+    videoCards[1].classList.toggle('is-secondary');
+  }
+
+  if (prevButton) prevButton.addEventListener('click', swapCards);
+  if (nextButton) nextButton.addEventListener('click', swapCards);
+
+  videoCards.forEach((card) => {
+    card.addEventListener('click', () => {
+      if (card.classList.contains('is-secondary')) {
+        swapCards();
+      }
+    });
+  });
+</script>
+</body>
+</html>
