@@ -88,12 +88,6 @@
       scrollbar-width: none;
     }
 
-    .nav-backdrop {
-      backdrop-filter: blur(10px);
-      -webkit-backdrop-filter: blur(10px);
-      background: rgba(5, 5, 5, 0.72);
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
 
     .video-card {
         position: absolute;
@@ -101,8 +95,17 @@
         border: 1px solid rgba(255,255,255,0.05);
         background: #1a1a1a;
         box-shadow: 0 40px 100px -30px rgba(0,0,0,0.85);
-        transition: all 0.55s ease;
         cursor: pointer;
+        will-change: transform, opacity, width, top, left, right;
+        backface-visibility: hidden;
+        transform: translateZ(0);
+        transition:
+        transform 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 0.45s ease,
+        width 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        top 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        left 0.7s cubic-bezier(0.22, 1, 0.36, 1),
+        right 0.7s cubic-bezier(0.22, 1, 0.36, 1);
     }
 
     .video-card.is-active {
@@ -119,12 +122,12 @@
         top: 220px;
         right: 0;
         z-index: 10;
-        transform: scale(0.96);
-        opacity: 0.88;
+        transform: scale(0.985);
+        opacity: 0.4;
     }
 
     .video-card.is-secondary:hover {
-        transform: scale(0.985);
+        transform: scale(1);
         opacity: 1;
     }
 
@@ -147,6 +150,7 @@
   </style>
 </head>
 <body class="selection:bg-white selection:text-black">
+    <div class="pointer-events-none fixed inset-x-0 top-0 z-40 h-28 bg-gradient-to-b from-black via-black/90 to-transparent md:h-20"></div>
   <a href="#main" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:z-[120] focus:bg-white focus:px-4 focus:py-2 focus:text-sm focus:font-semibold focus:text-black">Salta al contenuto</a>
 
   <nav class="fixed inset-x-0 top-0 z-50">
@@ -217,7 +221,7 @@
         </p>
         </div>
 
-        <div class="relative h-[620px] md:h-[720px]" id="video-slider">
+        <div class="relative flex flex-col gap-6 lg:block lg:h-[720px]" id="video-slider">
         <article class="video-card is-active" data-video-card>
             <div class="aspect-video overflow-hidden">
             <iframe
@@ -254,7 +258,7 @@
             </div>
         </article>
 
-        <div class="absolute bottom-0 left-0 z-30 flex gap-3">
+        <div class="z-30 flex gap-3 lg:absolute lg:bottom-0 lg:left-0">
             <button type="button" id="video-prev" class="border border-white/15 px-4 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">
             Prev
             </button>
@@ -451,7 +455,7 @@
           <article class="border border-white/5 bg-black/40 p-6 shadow-cinematic md:col-span-2 xl:col-span-1 xl:flex xl:flex-col xl:justify-center">
             <p class="mb-2 spec-label">Merch Info</p>
             <h3 class="font-headline text-3xl font-black uppercase text-white">Il nostro Merch</h3>
-            <p class="mt-4 text-sm leading-6 text-neutral-400">isponibile ai live, via DM o su bandcamp</p>
+            <p class="mt-4 text-sm leading-6 text-neutral-400">Disponibile ai live, via DM o su bandcamp</p>
          <div class="mt-6">
             <a href="https://nothingoffmirror.bandcamp.com/merch/digital-chains-official-t-shirt" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center border border-white/15 px-5 py-3 text-[11px] font-bold uppercase tracking-[0.2em] text-white transition hover:bg-white/8">
             Acquista ora
@@ -551,15 +555,22 @@
   const videoCards = document.querySelectorAll('[data-video-card]');
   const prevButton = document.getElementById('video-prev');
   const nextButton = document.getElementById('video-next');
+  let isAnimating = false;
 
   function swapCards() {
-    if (videoCards.length < 2) return;
+    if (videoCards.length < 2 || isAnimating) return;
+
+    isAnimating = true;
 
     videoCards[0].classList.toggle('is-active');
     videoCards[0].classList.toggle('is-secondary');
 
     videoCards[1].classList.toggle('is-active');
     videoCards[1].classList.toggle('is-secondary');
+
+    setTimeout(() => {
+      isAnimating = false;
+    }, 700);
   }
 
   if (prevButton) prevButton.addEventListener('click', swapCards);
